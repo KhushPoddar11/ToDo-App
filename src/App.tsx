@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import InputField from "./components/InputField";
+import { Input} from "./components/id";
+import TodoList from "./components/TodoList";
+import ClearButton from "./components/ClearButton";
 
-function App() {
+const getLocalItems = () => {
+
+  let list = localStorage.getItem('lists')
+
+  if(list) {
+    return JSON.parse(localStorage.getItem('lists') || '')
+  }else {
+    return []
+  }
+}
+
+const App:React.FC = () => {
+  const [input, setInput] = useState<string>('')
+  const [items, setItems] = useState<Input[]>(getLocalItems)
+
+  useEffect(() => {
+    localStorage.setItem('lists',JSON.stringify(items))
+  },[items])
+
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(input){
+      setItems([...items,{id:Date.now(),input}])
+      setInput('')
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InputField input={input} setInput={setInput} handleAdd={handleAdd}/>
+      <TodoList items={items} setItems={setItems}/>
+      <ClearButton setItems={setItems}/>
     </div>
   );
 }
