@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import "@aws-amplify/ui-react/styles.css"; // Ensure React UI libraries are styled correctly
+import { Amplify } from 'aws-amplify'
+import awsconfig from './aws-exports'
+Amplify.configure(awsconfig) // Configures the Amplify libraries with the cloud backend set up via the Amplify CLI
+
+const root = ReactDOM.createRoot(document.getElementById('root')! );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

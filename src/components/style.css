@@ -1,0 +1,46 @@
+.head{
+    font-family: "Roboto Light";
+    margin-top: 20px;
+}
+
+
+.inputTask{
+    padding: 30px;
+
+}
+
+.inputArea{
+    margin-right: 25px;
+    border: none;
+    padding: 20px 20px 20px 20px;
+    background-color: floralwhite;
+    font-family: "Roboto Light";
+    font-size: 17px;
+}
+
+.addButton{
+    background-color: floralwhite;
+    font-size: 16px;
+
+}
+
+.showTask{
+    margin-top: 5px;
+    margin-right: 30px;
+    margin-left: 30px;
+    /*padding: 20px 20px 20px 20px;*/
+}
+
+.textTask{
+    font-family: "Roboto Light";
+    font-size: 20px;
+    translateY:20px;
+    margin-right: 30px;
+    margin-top: 30px;
+    /*border: 2px solid black;*/
+}
+
+.clearButton{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
